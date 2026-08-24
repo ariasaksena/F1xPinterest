@@ -1,4 +1,4 @@
-# PADDOCK — Product Interface (MVP)
+# FORMULA PLANNER — Product Interface (MVP)
 
 A mock official-race-account trip-planning site for the **F1 Las Vegas GP**, in the style of
 ShopMy: a profile, a set of shoppable **guides**, and product links that click out to real

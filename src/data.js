@@ -23,7 +23,7 @@ export const guides = [
     number: '01',
     title: '3-Day VIP Weekend',
     category: 'Hospitality',
-    cover: coverVip,
+    cover: coverHotel,
     blurb: 'Three days trackside — premium hospitality and the best of the Strip.',
     items: [
       {
@@ -40,7 +40,7 @@ export const guides = [
     number: '02',
     title: 'Hotel Guide',
     category: 'Where to Stay',
-    cover: coverHotel,
+    cover: coverVip,
     blurb: 'Where to stay on and around the Strip for race weekend.',
     items: [
       {

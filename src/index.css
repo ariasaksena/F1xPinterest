@@ -8,7 +8,7 @@
   --line:#D9CBB4;
   --taupe:#7C6E5D;
   --shadow:0 1px 2px rgba(27,21,18,.04);
-  --serif:'Bodoni Moda', Georgia, serif;
+  --serif:'Playfair Display', Georgia, serif;
   --sans:'Jost', system-ui, sans-serif;
 }
 *{box-sizing:border-box}
@@ -258,3 +258,169 @@ button{font-family:inherit;cursor:pointer}
 .mtable tr:last-child td{border-bottom:none}
 .mtable tr.hl td{background:rgba(122,24,24,.05)}
 .takeaway{font-family:var(--sans);font-size:.82rem;color:var(--ink);background:var(--sand);border-left:3px solid var(--oxblood);padding:14px 16px;margin:8px 0 0;line-height:1.55}
+
+/* ================= ABOUT / SCRAPBOOK ================= */
+:root{ --hand:'Caveat', cursive; --paper2:#FBF6EC; --tape:rgba(214,196,160,.62); }
+
+.scrap{max-width:1080px;margin:0 auto;padding:0 clamp(18px,5vw,56px) 90px}
+.scrap__hdr{display:flex;flex-direction:column;align-items:center;padding:clamp(40px,6vw,74px) 0 8px}
+.scrap__hdr img{width:min(360px,72vw);height:auto;transform:rotate(-1.5deg)}
+.scrap__hdr--journal img{width:min(620px,88vw);transform:rotate(1deg)}
+.scrap__intro{font-family:var(--hand);font-size:clamp(1.3rem,2.6vw,1.7rem);color:var(--taupe);
+  text-align:center;max-width:46ch;margin:14px auto 0;line-height:1.45;transform:rotate(-.4deg)}
+
+/* timeline */
+.tl{position:relative;margin:clamp(40px,6vw,70px) 0 0;padding:10px 0}
+.tl::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:0;
+  border-left:2px dashed rgba(122,24,24,.42);transform:translateX(-50%)}
+.tl__row{position:relative;display:grid;grid-template-columns:1fr 64px 1fr;align-items:center;
+  margin-bottom:clamp(22px,3.2vw,40px)}
+.tl__dot{grid-column:2;justify-self:center;width:15px;height:15px;border-radius:50%;
+  background:var(--oxblood);box-shadow:0 0 0 5px var(--cream),0 0 0 7px rgba(122,24,24,.3);z-index:2}
+.tl__side{grid-column:1}
+.tl__row:nth-child(even) .tl__side{grid-column:3}
+.tl__meta{grid-column:3;padding-left:8px}
+.tl__row:nth-child(even) .tl__meta{grid-column:1;text-align:right;padding-left:0;padding-right:8px}
+
+/* polaroid */
+.polas{background:none;border:none;padding:0;display:inline-block;text-align:inherit}
+.pola{position:relative;background:var(--paper2);padding:12px 12px 46px;
+  box-shadow:0 2px 5px rgba(27,21,18,.13),0 10px 22px rgba(27,21,18,.07);
+  transform:rotate(var(--rot,-2deg));transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s;
+  width:min(310px,74vw);cursor:pointer}
+.polas:hover .pola{transform:rotate(0deg) translateY(-5px) scale(1.02);
+  box-shadow:0 4px 10px rgba(27,21,18,.16),0 18px 34px rgba(27,21,18,.12)}
+.pola img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:var(--sand)}
+.pola__cap{position:absolute;left:0;right:0;bottom:12px;text-align:center;
+  font-family:var(--hand);font-size:1.18rem;color:var(--ink)}
+.pola__tape{position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  width:96px;height:26px;background:var(--tape);opacity:.9}
+.pola__tape--r{left:auto;right:-16px;top:26px;transform:rotate(64deg);width:78px}
+
+.tl__yr{font-family:var(--hand);font-size:1.55rem;color:var(--oxblood);line-height:1;margin-bottom:5px}
+.tl__ttl{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.3vw,1.55rem);
+  line-height:1.15;margin:0 0 7px}
+.tl__sub{font-family:var(--sans);font-size:.83rem;color:var(--taupe);line-height:1.55;max-width:30ch;margin:0}
+.tl__row:nth-child(even) .tl__sub{margin-left:auto}
+.tl__open{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.62rem;
+  color:var(--oxblood);margin-top:10px;display:inline-block;border-bottom:1px solid rgba(122,24,24,.4);padding-bottom:2px}
+
+/* overlay */
+.ov{position:fixed;inset:0;z-index:100;background:rgba(27,21,18,.62);backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;padding:20px;animation:fade .25s ease both;overflow-y:auto}
+.ov__card{background:var(--cream);max-width:980px;width:100%;padding:clamp(20px,3.4vw,38px);
+  position:relative;box-shadow:0 24px 60px rgba(0,0,0,.3);max-height:92vh;overflow-y:auto}
+.ov__x{position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.5rem;
+  color:var(--taupe);line-height:1;padding:6px 9px}
+.ov__x:hover{color:var(--oxblood)}
+.ov__yr{font-family:var(--hand);font-size:1.5rem;color:var(--oxblood);line-height:1}
+.ov__ttl{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3.4vw,2.2rem);
+  margin:2px 0 14px;line-height:1.06}
+.ov__grid{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:start}
+.ov__shots{display:grid;gap:14px}
+.ov__shot{background:var(--paper2);padding:9px 9px 9px;box-shadow:0 2px 6px rgba(27,21,18,.12);
+  transform:rotate(var(--r,1.4deg))}
+.ov__shot img{width:100%;max-height:290px;object-fit:contain;display:block;background:var(--sand)}
+.ov__body p{font-family:var(--sans);font-size:.93rem;line-height:1.7;color:var(--ink);margin:0 0 12px}
+.ov__ph{font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--taupe);border:1px dashed var(--line);padding:9px 11px;display:inline-block}
+@media(max-width:780px){
+  .ov__grid{grid-template-columns:1fr}
+  .tl::before{left:26px}
+  .tl__row{grid-template-columns:52px 1fr;gap:10px}
+  .tl__dot{grid-column:1;justify-self:center}
+  .tl__side,.tl__row:nth-child(even) .tl__side{grid-column:2}
+  .tl__meta,.tl__row:nth-child(even) .tl__meta{grid-column:2;text-align:left;padding:12px 0 0}
+  .tl__row:nth-child(even) .tl__sub{margin-left:0}
+}
+.ov__shot--main img{max-height:none;aspect-ratio:1/1;object-fit:cover}
+
+/* ================= DISCOVERY JOURNAL / MIND MAP ================= */
+.mm{margin:clamp(26px,4vw,44px) auto 0;max-width:1000px}
+.mm__row{display:flex}
+.mm__row--r{justify-content:flex-end}
+.mm__card{position:relative;width:min(560px,86%);background:var(--paper2);
+  padding:22px 24px 24px;box-shadow:0 2px 5px rgba(27,21,18,.12),0 12px 26px rgba(27,21,18,.06);
+  transform:rotate(var(--rot,-.7deg))}
+.mm__card::after{content:'';position:absolute;top:-11px;left:34px;width:84px;height:22px;
+  background:var(--tape);transform:rotate(-4deg)}
+.mm__row--r .mm__card::after{left:auto;right:34px;transform:rotate(3deg)}
+.mm__no{font-family:var(--hand);font-size:1.5rem;color:var(--oxblood);line-height:1;margin-bottom:2px}
+.mm__ttl{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.45rem);
+  line-height:1.15;margin:0 0 10px}
+.mm__txt{font-family:var(--sans);font-size:.88rem;line-height:1.72;color:var(--ink);margin:0}
+.mm__arrow{display:block;width:100%;height:auto;overflow:visible}
+.mm__arrow path,.mm__arrow line{fill:none;stroke:var(--oxblood);stroke-width:2.1;
+  stroke-linecap:round;stroke-linejoin:round;opacity:.78}
+
+/* taped artifact beside a node */
+.mm__art{position:relative;background:var(--paper2);padding:10px 10px 12px;
+  box-shadow:0 2px 6px rgba(27,21,18,.14);transform:rotate(1.6deg);margin:18px 0 0;width:100%}
+.mm__art::after{content:'';position:absolute;top:-10px;right:28px;width:76px;height:20px;
+  background:var(--tape);transform:rotate(5deg)}
+.mm__art img{width:100%;display:block;background:#fff}
+.mm__artcap{font-family:var(--hand);font-size:1.1rem;color:var(--taupe);text-align:center;
+  margin-top:6px;display:block}
+
+@media(max-width:760px){
+  .mm__row,.mm__row--r{justify-content:flex-start}
+  .mm__card{width:100%;transform:rotate(-.4deg)}
+  .mm__arrow{max-height:78px}
+}
+
+/* ================= DISCOVERY JOURNAL (mind map) ================= */
+.map{position:relative;margin:clamp(26px,4vw,44px) 0 0}
+.map__row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,48px);align-items:start;
+  margin-bottom:clamp(6px,1.2vw,14px)}
+.map__row--r .node{grid-column:2}
+.map__row--l .node{grid-column:1}
+
+.node{position:relative;background:var(--paper2);padding:22px 24px 24px;
+  box-shadow:0 2px 5px rgba(27,21,18,.11),0 12px 26px rgba(27,21,18,.06);
+  transform:rotate(var(--rot,-.7deg));max-width:520px}
+.node__tape{position:absolute;top:-12px;left:26px;width:88px;height:24px;background:var(--tape);
+  transform:rotate(-4deg);opacity:.9}
+.node__tape--r{left:auto;right:26px;transform:rotate(5deg)}
+.node__no{font-family:var(--hand);font-size:1.5rem;color:var(--oxblood);line-height:1;margin-bottom:2px}
+.node__ttl{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.45rem);
+  line-height:1.14;margin:0 0 11px}
+.node__txt{font-family:var(--sans);font-size:.9rem;line-height:1.68;color:var(--ink);margin:0}
+.node__txt b{color:var(--oxblood);font-weight:600}
+
+.node__art{margin-top:16px;background:#fff;padding:8px;box-shadow:0 1px 4px rgba(27,21,18,.14);
+  transform:rotate(1.2deg)}
+.node__art img{width:100%;display:block}
+.node__artcap{font-family:var(--hand);font-size:1.05rem;color:var(--taupe);text-align:center;
+  margin-top:7px;transform:rotate(-.6deg)}
+
+.arrow{width:clamp(46px,5vw,64px);height:auto;display:block;overflow:visible}
+.arrow path{fill:none;stroke:var(--oxblood);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+.arrowwrap{grid-column:1 / -1;display:flex;justify-content:center;padding:clamp(10px,1.6vw,20px) 0}
+
+.jrnl__end{font-family:var(--hand);font-size:clamp(1.35rem,2.8vw,1.8rem);color:var(--oxblood);
+  text-align:center;margin:clamp(30px,5vw,54px) auto 0;max-width:40ch;transform:rotate(-.6deg)}
+
+@media(max-width:820px){
+  .map__row{grid-template-columns:1fr}
+  .map__row--r .node,.map__row--l .node{grid-column:1}
+  .node{max-width:none}
+  .arrow{width:44px}
+}
+
+/* project card (stands in for an F1 x Pinterest lockup) */
+.cardart{aspect-ratio:1/1;background:var(--cream);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:12% 10%;
+  border:1px solid var(--line)}
+.cardart__yr{font-family:var(--sans);text-transform:uppercase;letter-spacing:.26em;
+  font-size:.58rem;color:var(--taupe);margin-bottom:9%}
+.cardart__f1{font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,4.6vw,2.9rem);
+  line-height:.9;color:var(--ink);letter-spacing:-.02em}
+.cardart__x{font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.6vw,1.6rem);
+  color:var(--oxblood);margin:6% 0}
+.cardart__pin{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,3.2vw,2rem);
+  line-height:.95;color:var(--oxblood);letter-spacing:-.01em}
+.cardart__rule{width:34%;height:0;border-top:1.5px solid var(--oxblood);
+  border-bottom:1.5px solid var(--oxblood);height:5px;margin:9% 0 7%}
+.cardart__sub{font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;
+  font-size:.54rem;color:var(--taupe)}
+.ov__shot--main .cardart{border:none}

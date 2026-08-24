@@ -46,7 +46,6 @@ export default function Dashboard() {
       <div className="dash">
         {/* 1 — THE GAP */}
         <section className="sec" style={{ borderTop: 'none' }}>
-          <div className="sec__no">N&ordm; 01</div>
           <h2 className="sec__title">No official F1 account is on Pinterest.</h2>
           <div className="gap-grid">
             <div>
@@ -68,7 +67,6 @@ export default function Dashboard() {
 
         {/* 2 — DEMAND */}
         <section className="sec">
-          <div className="sec__no">N&ordm; 02</div>
           <h2 className="sec__title">People plan the trip weeks before the race.</h2>
           <p className="sec__lead">
             A year of Google searches for the Las Vegas GP. Searches for the race itself spike only during race
@@ -98,7 +96,6 @@ export default function Dashboard() {
 
         {/* 3 — ONE SEASON */}
         <section className="sec">
-          <div className="sec__no">N&ordm; 03</div>
           <h2 className="sec__title">One season, race by race.</h2>
           <p className="sec__lead">
             The account loses money most of the year while it builds an audience, then earns it back at the big
@@ -134,7 +131,6 @@ export default function Dashboard() {
 
         {/* 4 — TWO ENGINES */}
         <section className="sec">
-          <div className="sec__no">N&ordm; 04</div>
           <h2 className="sec__title">The audience is what drives the bookings.</h2>
           <p className="sec__lead">
             The followers and the bookings aren&rsquo;t separate things. The audience you build is who books the
@@ -154,7 +150,6 @@ export default function Dashboard() {
 
         {/* 5 — MULTI-SEASON */}
         <section className="sec">
-          <div className="sec__no">N&ordm; 05</div>
           <h2 className="sec__title">Year 1 breaks even. Then it grows.</h2>
           <p className="sec__lead">
             The audience carries over and compounds each year while costs stay flat, so profit climbs. Year 1
@@ -192,7 +187,6 @@ export default function Dashboard() {
 
         {/* 6 — PARTNERSHIPS */}
         <section className="sec">
-          <div className="sec__no">N&ordm; 06</div>
           <h2 className="sec__title">Booking partnerships add margin.</h2>
           <p className="sec__lead">
             Deals with hotels and ticketing partners raise the share of each booking the account keeps. Applied
@@ -219,7 +213,6 @@ export default function Dashboard() {
 
         {/* 7 — PLATFORM */}
         <section className="sec">
-          <div className="sec__no">N&ordm; 07</div>
           <h2 className="sec__title">The real scale: more accounts.</h2>
           <p className="sec__lead">
             One account proves it works. The bigger opportunity is opening the tool to creators and influencers
@@ -243,7 +236,6 @@ export default function Dashboard() {
 
         {/* 8 — THE ASK */}
         <section className="sec">
-          <div className="sec__no">N&ordm; 08</div>
           <h2 className="sec__title">What it comes down to.</h2>
           <p className="sec__lead">
             One official account lands near breakeven in Year 1, so the decision rests on the assumptions above &mdash;
