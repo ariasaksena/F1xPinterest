@@ -424,3 +424,67 @@ button{font-family:inherit;cursor:pointer}
 .cardart__sub{font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;
   font-size:.54rem;color:var(--taupe)}
 .ov__shot--main .cardart{border:none}
+
+/* ---- branching paths ---- */
+.forkcue{display:flex;justify-content:center;margin:clamp(6px,1.4vw,14px) 0 2px}
+.forkcue span{font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;font-size:.62rem;
+  color:var(--oxblood);border-bottom:1px solid rgba(122,24,24,.35);padding-bottom:3px}
+.fork{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3.4vw,52px);align-items:start;
+  margin-top:clamp(2px,.6vw,8px)}
+.fork__col{display:flex;flex-direction:column;align-items:center}
+.fork__col .node{max-width:none;width:100%}
+.pathlbl{font-family:var(--hand);font-size:1.42rem;color:var(--oxblood);line-height:1;
+  margin-bottom:2px;transform:rotate(-1deg)}
+.converge{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3.4vw,52px);
+  justify-items:center;padding:clamp(6px,1.4vw,16px) 0}
+.final{display:flex;justify-content:center;margin-top:clamp(2px,.8vw,10px)}
+.final .node{max-width:640px}
+
+/* bio */
+.scrap__bio{font-family:var(--sans);font-size:clamp(.92rem,1.7vw,1rem);line-height:1.75;
+  color:var(--ink);max-width:60ch;margin:18px auto 0;text-align:center}
+
+@media(max-width:820px){
+  .fork,.converge{grid-template-columns:1fr}
+  .converge{gap:0}
+}
+
+/* ================= FLOATING WALKTHROUGH PLAYER ================= */
+.wt{position:fixed;right:clamp(14px,2.2vw,28px);bottom:clamp(14px,2.2vw,28px);z-index:90;
+  width:clamp(240px,24vw,330px);background:var(--paper2);
+  box-shadow:0 3px 8px rgba(27,21,18,.16),0 16px 38px rgba(27,21,18,.16);
+  transform:rotate(-1.1deg);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.wt:hover{transform:rotate(0deg) translateY(-3px)}
+.wt__tape{position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  width:84px;height:22px;background:var(--tape);opacity:.9;z-index:2}
+.wt__frame{position:relative;padding:9px 9px 0}
+.wt__frame video{width:100%;display:block;background:var(--sand);aspect-ratio:3/2;object-fit:cover}
+.wt__ph{width:100%;aspect-ratio:3/2;background:var(--sand);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;text-align:center;padding:14px}
+.wt__ph b{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink);line-height:1.2}
+.wt__ph span{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe)}
+.wt__cap{font-family:var(--hand);font-size:1.12rem;color:var(--ink);text-align:center;padding:7px 8px 11px}
+.wt__play{position:absolute;inset:9px 9px 0;display:flex;align-items:center;justify-content:center;
+  background:rgba(27,21,18,.26);border:none;cursor:pointer;transition:background .22s}
+.wt__play:hover{background:rgba(27,21,18,.36)}
+.wt__play i{width:52px;height:52px;border-radius:50%;background:var(--oxblood);display:flex;
+  align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.28)}
+.wt__play i::after{content:'';border-left:15px solid #fff;border-top:10px solid transparent;
+  border-bottom:10px solid transparent;margin-left:4px}
+.wt__min{position:absolute;top:-9px;right:-9px;z-index:3;width:26px;height:26px;border-radius:50%;
+  background:var(--ink);color:#fff;border:none;font-size:.9rem;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.28)}
+.wt__min:hover{background:var(--oxblood)}
+.wt--min{width:auto}
+.wt--min .wt__frame,.wt--min .wt__cap{display:none}
+.wt__pill{display:none;font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;
+  font-size:.64rem;color:#fff;background:var(--oxblood);padding:11px 15px;white-space:nowrap;
+  border:none;cursor:pointer;align-items:center;gap:8px}
+.wt--min .wt__pill{display:flex}
+.wt__pill::before{content:'';border-left:9px solid #fff;border-top:6px solid transparent;
+  border-bottom:6px solid transparent}
+@media(max-width:640px){
+  .wt{width:190px;right:10px;bottom:10px}
+  .wt__cap{font-size:.95rem}
+  .wt__play i{width:40px;height:40px}
+}
