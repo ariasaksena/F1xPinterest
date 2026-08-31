@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Squiggle from '../components/Squiggle'
+import Walkthrough from '../components/Walkthrough'
 import hdrAbout from '../assets/hdr-about.png'
 import hdrJournal from '../assets/hdr-journal.png'
 import systemmap from '../assets/systemmap.jpg'
@@ -23,7 +24,7 @@ const EVENTS = [
     body: 'This project is where both sides of my work finally met. The creative side, which I had spent years developing through journals, design, and Pinterest, and the technical side, which I had been building through computer science. I used them together to research a real gap in the Formula One system and to design, model, and build a product around it. Formula Planner is the result: an idea I found through the sport I love, supported by data, and built by hand.' },
 ]
 
-const NODES = [
+const LINEAR = [
   { no: '01', title: 'Choosing the Focus', rot: '-.8deg',
     text: 'Every project I have done well began with a subject I already cared about. Outside of academics, that subject is Formula One. It is where I learned to organize a community by founding my school\u2019s F1 Club, where I have developed my creative work, and a big reason I became interested in STEM and decided to pursue computer science, including in classes where I am the only girl. I wanted this internship to focus on something I would keep thinking about after hours.' },
   { no: '02', title: 'Mapping the System', rot: '.7deg', art: systemmap, artCap: 'the system map, drawn by hand',
@@ -32,15 +33,19 @@ const NODES = [
     text: 'To test whether the gap actually mattered, I reversed the question and asked what would happen to the Formula One system if Pinterest did not exist. This forced me to show that Pinterest was genuinely different rather than interchangeable with Instagram or TikTok. Three findings held up: its user base matches F1\u2019s fastest-growing group of young female fans, those users arrive with high purchase intent, and the platform is one of the largest trip-planning sites online.' },
   { no: '04', title: 'Testing the Weakness', rot: '1deg',
     text: 'Midway through, I found the strongest argument against my own idea. Anyone can build a Pinterest board of shoppable links for free, so I made one to test it. The result showed me the difference: Pinterest is very good at distribution, but it cannot hold a multi-part plan, it does not pay the account owner, and it cannot prove that a pin led to a booking. This changed how I framed the product. The site does not compete with Pinterest boards. It adds the payment and tracking layer that makes posting them worth doing.' },
-  { no: '05', title: 'Quantifying the Opportunity', rot: '-1deg',
-    text: 'I turned those findings into numbers through market research and an opportunity cost analysis. My first assumption was that Pinterest would work best for teams, drivers, and merchandise. The analysis showed otherwise. Merchandise is a small purchase decided in minutes, while a race weekend involves flights, hotels, tickets, and dining planned over several weeks, worth thousands of dollars per attendee. The long-term opportunity was in travel and bookings. That also solved the tracking problem, because bookings are completed through links that can be measured.' },
-  { no: '06', title: 'The Product Concept', rot: '.8deg',
-    text: 'Official race accounts, such as the Las Vegas Grand Prix, post pins on Pinterest that send users to their profile on my site, where they have built guides for a full race weekend covering hotels, track tickets, dining, and apparel in one shoppable place. Building this taught me as much about project management as it did about product. I had to define an MVP that was realistic for the time I had, which meant deciding what to leave out.' },
-  { no: '07', title: 'The Financial Model', rot: '-.7deg',
-    text: 'The concept is backed by a season-long cash flow model built on real data, including Google Trends search interest for Las Vegas Grand Prix travel terms, visitor spending reports from host cities, race-weekend hotel pricing, F1 fan demographic surveys, Pinterest conversion benchmarks, and current ticket and merchandise prices. Building it taught me to keep every assumption visible so anyone can challenge it, to link the two sides of the model so audience growth actually drives bookings, and to vary the numbers by race instead of applying one flat rate. The result is a range with a break-even point rather than a single figure.' },
-  { no: '08', title: 'Building the Site', rot: '.9deg',
-    text: 'The build was the most familiar stage for me. My goal was to show both sides of my work: the computer science needed to ship a working React site, and the design skills to present the project in a way that looks like mine instead of a template.' },
 ]
+
+const BRANCH = {
+  money: { no: '05', label: 'Monetization Path', title: 'Quantifying the Opportunity', rot: '-.9deg',
+    text: 'I turned those findings into numbers through market research and an opportunity cost analysis. My first assumption was that Pinterest would work best for teams, drivers, and merchandise. The analysis showed otherwise. Merchandise is a small purchase decided in minutes, while a race weekend involves flights, hotels, tickets, and dining planned over several weeks, worth thousands of dollars per attendee. The long-term opportunity was in travel and bookings. That also solved the tracking problem, because bookings are completed through links that can be measured.',
+    text2: 'I then built a season-long cash flow model on real data, including Google Trends search interest for Las Vegas Grand Prix travel terms, visitor spending reports from host cities, race-weekend hotel pricing, F1 fan demographic surveys, Pinterest conversion benchmarks, and current ticket and merchandise prices. Building it taught me to keep every assumption visible so anyone can challenge it, to link the two sides of the model so audience growth actually drives bookings, and to vary the numbers by race instead of applying one flat rate. The result is a range with a break-even point rather than a single figure.' },
+  product: { no: '06', label: 'Product Path', title: 'The Product Concept', rot: '.9deg',
+    text: 'Formula Planner is a platform where official race accounts build and publish shoppable guides to their own race weekend. The Las Vegas Grand Prix, for example, creates an account and assembles a set of guides: where to stay, a three-day VIP itinerary, and what to wear on race day. Each guide is a collection of real products and bookings, presented as images that link directly to the hotel, the ticket vendor, the restaurant, or the store. It works the way ShopMy works for fashion creators, except the subject is an entire race weekend rather than an outfit.',
+    text2: 'The Pinterest connection is what makes it run. From the images inside a guide, the account generates a single collage that it posts to Pinterest as a pin. A fan planning a trip finds that pin, clicks it, and lands on the guide, where every item is bookable in one place. Because every click passes through the site, each booking can be traced back to the pin that produced it, and the account earns a commission on what it sells. The promoter and the city tourism board benefit directly, since both are measured on filled hotels and ticket sales. Building this taught me as much about project management as it did about product. I had to define an MVP that was realistic for the time I had, which meant deciding what to leave out.' },
+}
+
+const FINAL = { no: '07', title: 'The Launch', rot: '-.7deg',
+  text: 'The build was the most familiar stage for me. My goal was to show both sides of my work: the computer science needed to ship a working React site, and the design skills to present the project in a way that looks like mine instead of a template.' }
 
 function CardArt() {
   return (
@@ -97,9 +102,15 @@ export default function About() {
 
   return (
     <div className="scrap fade-in">
+      <Walkthrough />
       <header className="scrap__hdr">
         <img src={hdrAbout} alt="About Me" />
-        <p className="scrap__intro">Where I&rsquo;m going and where I&rsquo;ve been.</p>
+        <p className="scrap__bio">
+          Hi, I am Aria, a rising senior from New Jersey. My two biggest interests are Formula One and
+          computer science, and for a long time I treated them as separate things. This project is where they
+          finally met. I built Formula Planner during an externship with a mentor at Pinterest, using it to
+          research a real gap in the Formula One system and then design, model, and build a product around it.
+        </p>
       </header>
 
       <div className="tl">
@@ -129,7 +140,7 @@ export default function About() {
       </header>
 
       <div className="map">
-        {NODES.map((n, i) => {
+        {LINEAR.map((n, i) => {
           const side = i % 2 === 0 ? 'l' : 'r'
           return (
             <div key={n.no}>
@@ -147,14 +158,46 @@ export default function About() {
                   )}
                 </article>
               </div>
-              {i < NODES.length - 1 && (
-                <div className="arrowwrap">
-                  <Squiggle dir={side === 'l' ? 'lr' : 'rl'} variant={i} />
-                </div>
-              )}
+              <div className="arrowwrap">
+                <Squiggle dir={side === 'l' ? 'lr' : 'rl'} variant={i} />
+              </div>
             </div>
           )
         })}
+
+        <div className="forkcue">
+          <span>The work splits in two from here</span>
+        </div>
+
+        <div className="fork">
+          {[BRANCH.money, BRANCH.product].map((n, i) => (
+            <div className="fork__col" key={n.no}>
+              <Squiggle dir={i === 0 ? 'rl' : 'lr'} variant={i + 1} />
+              <div className="pathlbl">{n.label}</div>
+              <article className="node" style={{ '--rot': n.rot }}>
+                <span className={`node__tape${i === 1 ? ' node__tape--r' : ''}`} />
+                <div className="node__no">{n.no}</div>
+                <h3 className="node__ttl">{n.title}</h3>
+                <p className="node__txt">{n.text}</p>
+                {n.text2 && <p className="node__txt" style={{ marginTop: '12px' }}>{n.text2}</p>}
+              </article>
+            </div>
+          ))}
+        </div>
+
+        <div className="converge">
+          <Squiggle dir="lr" variant={3} />
+          <Squiggle dir="rl" variant={0} />
+        </div>
+
+        <div className="final">
+          <article className="node" style={{ '--rot': FINAL.rot }}>
+            <span className="node__tape" />
+            <div className="node__no">{FINAL.no}</div>
+            <h3 className="node__ttl">{FINAL.title}</h3>
+            <p className="node__txt">{FINAL.text}</p>
+          </article>
+        </div>
       </div>
 
       <p className="jrnl__end">and that is how Formula Planner came together.</p>
