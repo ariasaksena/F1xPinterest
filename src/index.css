@@ -458,8 +458,8 @@ button{font-family:inherit;cursor:pointer}
 .wt__tape{position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-3deg);
   width:84px;height:22px;background:var(--tape);opacity:.9;z-index:2}
 .wt__frame{position:relative;padding:9px 9px 0}
-.wt__frame video{width:100%;display:block;background:var(--sand);aspect-ratio:3/2;object-fit:cover}
-.wt__ph{width:100%;aspect-ratio:3/2;background:var(--sand);display:flex;flex-direction:column;
+.wt__frame video{width:100%;display:block;background:var(--sand);aspect-ratio:16/9;object-fit:cover}
+.wt__ph{width:100%;aspect-ratio:16/9;background:var(--sand);display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:8px;text-align:center;padding:14px}
 .wt__ph b{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink);line-height:1.2}
 .wt__ph span{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe)}
